@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//
+Route::resource('/students',StudentController::class);
+//
+Route::get('/students/{student}',[StudentController::class, 'show'])->name('students.show');
 
 Route::get('/', function () {
     return view('welcome');
