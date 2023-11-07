@@ -9,7 +9,7 @@ use App\Models\Student;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
  */
-class BookFactory extends Factory
+class StudentFactory extends Factory
 {
 
 // responsible for generating fake data for the Student model
@@ -20,9 +20,9 @@ public function definition(): array
         'address' => fake()->address,
         'dob' => fake()->date($format = 'd-m-y', $max = '2010',$min = '1900'),
         'number' => fake()->phoneNumber,
-        'college_id' => college()->id
-            
-    
+        'college_id' => fake()->randomNumber,
+        'created_at' => now(),
+        'updated_at' => now(),
         ];
     }
 }

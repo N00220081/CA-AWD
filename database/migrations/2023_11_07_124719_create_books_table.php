@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('address');
             $table->date('dob');
             $table->string('number');
-            $table->foreign('college_id')->reference('id')->on('college');
+            $table->string('college_id');
             $table->timestamps();
         });
     }
