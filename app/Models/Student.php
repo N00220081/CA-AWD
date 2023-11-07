@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+//not mass assignable
+    protected $guarded = [
+        'name',
+        'number'
+    ];
 
-    protected $guarded = [];
-
-    // protected $fillable = [
-    //     'name',
-    //     'dob',
-    //     'number',
-    //     'address',
-    //     'college_id'
-    // ];
+   //mass assignable
+    protected $fillable = [
+        'name',
+        'dob',
+        'number',
+        'address',
+        'college_id'
+    ];
 }

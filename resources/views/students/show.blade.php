@@ -17,9 +17,11 @@
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <table class="table table-hover">
                         <tbody>
-                          
+
+                          <!-- Display the label Name in bold. -->
                             <tr>
                                 <td class="font-bold">Name  </td>
+                                <!-- Display the student's name. -->
                                 <td>{{ $student->name }}</td>
                             </tr>
                            
@@ -43,8 +45,12 @@
                     </table>
                     <x-primary-button><a href="{{ route('students.edit', $student)}}">Edit</a></x-primary-button>
 
+                    <!-- A form for deleting the student. -->
                     <form action="{{ route('students.destroy', $student) }}" method="post">
-                        @method('delete')
+                     <!-- Use the HTTP DELETE method. -->    
+                    @method('delete')
+                     <!-- Display a button for deleting the student with a confirmation dialog. -->
+
                         @csrf
                         <x-primary-button onclick="return confirm('Are you sure you want to delete?')">Delete </x-primary-button>
                     </form>

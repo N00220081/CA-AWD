@@ -8,25 +8,43 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+        <!-- Display a success alert message, from a previous action such as adding or updating a student. -->
             <x-alert-success>
                 {{ session('success') }}
             </x-alert-success>
           
-            <x-primary-button><a href="{{ route('students.create') }}" class="btn-link btn-lg mb-2">Add a Student</a></x-primary-button>
+            <!-- Display a primary button that links to the page for creating a new student. -->
+            <x-primary-button style="margin-bottom: 12px;"><a href="{{ route('students.create') }}" class="btn-link btn-lg mb-2">Add a Student</a></x-primary-button>
             @forelse ($students as $student)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
-                    <a href="{{ route('students.show', $student) }}">{{ $student->name }}</a>
+                        <!--a link to view the student's details, with the student's name as as the link -->
+                    <a href="{{ route('students.show', $student) }}" style="font-weight: bolder;">{{ $student->name }}</a>
                     </h2>
+                    <!-- Display student details -->
                     <p class="mt-2">
+                        Address:
                         {{$student->address}}
+                    </p>
+                    <p class="mt-2">
+                        Phone number:
                         {{$student->number}}
-                        {{$student->dob}}
+                    </p>
+
+                    <p class="mt-2">
+                        Date of birth:
+                        {{$student->dob}}  
+                    </p>
+
+                    <p class="mt-2">
+                        College ID:
                         {{$student->college_id}}
                        
                     </p>
 
                 </div>
+
+                <!-- If there are no students in the collection, display a message indicating that theres no students -->
             @empty
             <p>No students</p>
             @endforelse
