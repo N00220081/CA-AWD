@@ -18,7 +18,7 @@ public function definition(): array
     return [
         'name' => fake()->name,
         'address' => fake()->address,
-        'dob' => fake()->date($format = 'd-m-y', $max = '2010',$min = '1900'),
+        'dob' => fake()->date(),
         'number' => fake()->phoneNumber,
         'college_id' => fake()->randomNumber,
         'created_at' => now(),
