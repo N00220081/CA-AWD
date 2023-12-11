@@ -14,13 +14,23 @@
             </x-alert-success>
           
             <!-- Display a primary button that links to the page for creating a new student. -->
-            <x-primary-button style="margin-bottom: 12px;"><a href="{{ route('students.create') }}" class="btn-link btn-lg mb-2">Add a Student</a></x-primary-button>
+            <x-primary-button style="margin-bottom: 12px;"><a href="{{ route('admin.students.create') }}" class="btn-link btn-lg mb-2">Add a Student</a></x-primary-button>
             @forelse ($students as $student)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
                         <!--a link to view the student's details, with the student's name as as the link -->
-                    <a href="{{ route('students.show', $student) }}" style="font-weight: bolder;">{{ $student->name }}</a>
+                    <a href="{{ route('admin.students.show', $student) }}" style="font-weight: bolder;">{{ $student->name }}</a>
                     </h2>
+
+                    <p class="mt-2">
+                        <h3 class="font-bold test-1x1">
+                            <strong> College Name </strong>
+                            {{$student->college->name}}
+                            {{$student->description}}
+
+
+                        </h3>
+                    </p>
                     <!-- Display student details -->
                     <p class="mt-2">
                         Address:

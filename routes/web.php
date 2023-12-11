@@ -1,7 +1,7 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Admin\StudentController as AdminStudentController;
+use App\Http\Controllers\User\StudentController as UserStudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //
-Route::resource('/students',StudentController::class);
-//
-Route::get('/students/{student}',[StudentController::class, 'show'])->name('students.show');
+// Route::resource('/students',StudentController::class);
+// //
+// Route::get('/students/{student}',[StudentController::class, 'show'])->name('students.show');
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/students',StudentController::class);
+Route::resource('/admin/student', AdminStudentController::class)->middleware(['auth'])->names('admin.students');
+Route::resource('/user/student', UserStudentController::class)->middleware(['auth'])->names('user.students')->only(['index','show']);
 
 require __DIR__.'/auth.php';

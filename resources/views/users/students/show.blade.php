@@ -37,22 +37,21 @@
                                 <td class="font-bold ">Date of Birth </td>
                                 <td>{{ $student->dob }}</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td class="font-bold ">College_id </td>
                                 <td>{{ $student->college_id }}</td>
+                            </tr> -->
+                            <tr>
+                                <td class="font-bold ">College Name </td>
+                                <td>{{ $student->college->name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold ">College Address </td>
+                                <td>{{ $student->college->address }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <x-primary-button><a href="{{ route('students.edit', $student)}}">Edit</a></x-primary-button>
-
-                    <!-- A form for deleting the student. -->
-                    <form action="{{ route('students.destroy', $student) }}" method="post">
-                     <!-- Use the HTTP DELETE method. -->    
-                    @method('delete')
-                     <!-- Display a button for deleting the student with a confirmation dialog. -->
-
-                        @csrf
-                        <x-primary-button onclick="return confirm('Are you sure you want to delete?')">Delete </x-primary-button>
+                    
                     </form>
                 </div>
             </div>

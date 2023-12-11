@@ -22,4 +22,9 @@ class Student extends Model
         'address',
         'college_id'
     ];
+
+    public function college()
+    {
+        return $this->belongsTo(College::class);
+    }
 }

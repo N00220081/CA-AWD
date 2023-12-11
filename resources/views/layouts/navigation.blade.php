@@ -16,19 +16,30 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('students.index')" :active="request()->routeIs('students.index')">
-                        {{ __('All Students') }}
-                    </x-nav-link>
+                    @if(auth()->user()->hasRole('admin'))
+                        <x-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.index')">
+                            {{ __('All Students') }}
+                        </x-nav-link>
+                    @elseif(auth()->user()->hasRole('user'))
+                        <x-nav-link :href="route('user.students.index')" :active="request()->routeIs('user.students.index')">
+                            {{ __('All Students') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('students.index')" :active="request()->routeIs('students.index')">
+                            {{ __('All Students') }}
+                        </x-nav-link>
+                    @endif
                 </div>
-
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('students.create')" :active="request()->routeIs('students.create')">
-                        {{ __('Create Students') }}
-                    </x-nav-link>
-                </div>
-            </div>
+                    @if(auth()->user()->hasRole('admin'))
+                        <x-nav-link :href="route('admin.students.create')" :active="request()->routeIs('admin.students.create')">
+                            {{ __('Create Student') }}
+                        </x-nav-link>
+                  
+                    @endif
+                </div>                
+          
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
