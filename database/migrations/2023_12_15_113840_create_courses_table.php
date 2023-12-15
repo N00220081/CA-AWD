@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('colleges', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
+            $table->string('department');
             $table->timestamps();
-
-            $table->foreignId('college_id')->nullable(); 
-            $table->foreign('college_id')->references('id')->on('your_reference_table')->onDelete('cascade');
         });
     }
 
-  
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('colleges');
+        Schema::dropIfExists('courses');
     }
 };
-

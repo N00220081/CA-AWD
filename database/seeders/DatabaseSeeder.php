@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Student;
 use App\Models\College;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(CollegeSeeder::class);
+        $this->call(CourseSeeder::class);
+
     }
 }

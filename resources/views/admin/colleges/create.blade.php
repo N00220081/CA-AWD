@@ -2,19 +2,19 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Student') }}
+            {{ __('Create College') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-                <form action="{{ route('admin.students.store') }}"method="post" enctype="multipart/form-data">
-                <!-- A form that leads to the action 'admin.students.store' route, using the POST method and allowing file uploads -->   
+                <form action="{{ route('admin.colleges.store') }}"method="post" enctype="multipart/form-data">
+                <!-- A form that leads to the action 'admin.colleges.store' route, using the POST method and allowing file uploads -->   
                 @csrf
                 <!-- A CSRF token for security. Protects against cross-site request forgery attacks. -->
 
-                    <!-- text input for students name -->
+                    <!-- text input for colleges name -->
                     <x-text-input
                         type="text"
                         name="name"
@@ -23,23 +23,6 @@
                         class="w-full mt-6"
                         :value="@old('name')"></x-text-input>
 
-                    <!--input for date of birth with the date format  -->
-                    <x-text-input
-                        type="date"
-                        name="dob"
-                        field="dob"
-                        placeholder="Date of Birth"
-                        class="w-full mt-6"
-                        :value="@old('date')"></x-text-input>
-
-                    <!--input for students phone number  -->
-                    <x-text-input
-                        type="text"
-                        name="number"
-                        field="number"
-                        placeholder="Number"
-                        class="w-full mt-6"
-                        :value="@old('number')"></x-text-input>
 
                     <!-- a text area for address -->
                     <x-textarea
@@ -65,16 +48,8 @@
                         <x-select-college name="college_id" :colleges="$colleges" :selected="old('college_id')"/>
                     </div>
 
-                    <div class="form-group">
-                        <label for="courses" ><strong>Courses</strong><br></label>
-                        @foreach($courses as $course)
-                        <input type="checkbox", value="{{$course->id}}" name="courses[]">
-                        {{$course->name}}
-                        @endforeach 
-                    </div>
-
                         <!-- this button saves the information -->
-                    <x-primary-button class="mt-6">Save Student</x-primary-button>
+                    <x-primary-button class="mt-6">Save College</x-primary-button>
                 </form>
             </div>
         </div>

@@ -2,6 +2,13 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\User\StudentController as UserStudentController;
+use App\Http\Controllers\Admin\CollegeController as AdminCollegeController;
+use App\Http\Controllers\User\CollegeController as UserCollegeController;
+
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
+use App\Http\Controllers\User\CourseController as UserCourseController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,5 +42,13 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/admin/student', AdminStudentController::class)->middleware(['auth'])->names('admin.students');
 Route::resource('/user/student', UserStudentController::class)->middleware(['auth'])->names('user.students')->only(['index','show']);
+
+Route::resource('/admin/colleges', AdminCollegeController::class)->middleware(['auth'])->names('admin.colleges');
+Route::resource('/user/colleges', UserCollegeController::class)->middleware(['auth'])->names('user.colleges')->only(['index','show']);
+
+Route::resource('/admin/courses', AdminCourseController::class)->middleware(['auth'])->names('admin.courses');
+Route::resource('/user/courses', UserCourseController::class)->middleware(['auth'])->names('user.courses')->only(['index', 'show']);
+
+
 
 require __DIR__.'/auth.php';

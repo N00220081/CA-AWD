@@ -49,6 +49,13 @@
                                 <td class="font-bold ">College Address </td>
                                 <td>{{ $student->college->address }}</td>
                             </tr>
+
+                            @foreach ($student->courses as $course)
+                            <tr>
+                                <td class="font-bold ">Course </td>
+                                <td>{{ $course->name }}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <x-primary-button><a href="{{ route('admin.students.edit', $student)}}">Edit</a></x-primary-button>
