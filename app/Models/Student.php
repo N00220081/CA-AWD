@@ -20,7 +20,8 @@ class Student extends Model
         'dob',
         'number',
         'address',
-        'college_id'
+        'college_id',
+        
     ];
 
     public function college()

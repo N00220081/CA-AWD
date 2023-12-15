@@ -26,7 +26,7 @@
                         <h3 class="font-bold test-1x1">
                             <strong> College Name </strong>
                             {{$student->college->name}}
-                            {{$student->description}}
+                            {{$student->address}}
 
 
                         </h3>

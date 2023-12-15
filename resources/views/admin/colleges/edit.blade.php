@@ -19,26 +19,11 @@
                         name="name"
                         field="name"
                         placeholder="Name"
-                        class="w-full"
-                        autocomplete="off"
-                        value=""></x-text-input>
-
-                    <x-text-input
-                        type="date"
-                        name="dob"
-                        field="dob"
-                        placeholder="Date of Birth"
                         class="w-full mt-6"
-                        value=""></x-text-input>
+                        :value="@old('name')"></x-text-input>
 
-                    <x-text-input
-                        type="text"
-                        name="number"
-                        field="number"
-                        placeholder="Number"
-                        class="w-full mt-6"
-                        value=""></x-text-input>
 
+                    <!-- a text area for address -->
                     <x-textarea
                         name="address"
                         rows="4"
@@ -46,16 +31,21 @@
                         field="address"
                         placeholder="Address..."
                         class="w-full mt-6"
-                        value="">
+                        :value="@old('address')">
                     </x-textarea>
                   
-                    <x-text-input
+                    <!-- text input for college id -->
+                    <!-- <x-text-input
                         type="text"
                         name="college_id"
                         placeholder="College ID"
                         class="w-full mt-6"
                         field="college_id"
-                        value=""></x-text-input>
+                        :value="@old('college_id')"></x-text-input> -->
+
+                        <div class="mt-6">
+                        <x-select-college name="college_id" :colleges="$colleges" :selected="old('college_id')"/>
+                    </div>
 
                     <x-primary-button class="mt-6">Save College</x-primary-button>
                 </form>

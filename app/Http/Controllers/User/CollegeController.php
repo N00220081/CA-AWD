@@ -14,25 +14,9 @@ class CollegeController extends Controller
      */
     public function index()
     {
-    $colleges = College::all();
+        $colleges = College::all();
 
-    return view('user.colleges.index')->with('colleges', $colleges);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('user.colleges.index')->with('colleges', $colleges);
     }
 
     /**
@@ -40,38 +24,13 @@ class CollegeController extends Controller
      */
     public function show(College $college)
     {
-      
-        if (!Auth::id()){
-            return abort(403);
+        if (!Auth::check()) {
+            // User is not authenticated, redirect to login page or show a custom error page
+            return redirect()->route('login')->with('error', 'Please log in to view this content.');
         }
 
         $students = $college->students;
 
         return view('user.colleges.show', compact('college', 'students'));
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

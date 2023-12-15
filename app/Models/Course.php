@@ -9,10 +9,13 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'department',
+    ];
 
     public function students()
     {
-        return $this->belongsToMany(Student::class)->withTimeStamps();
+        return $this->hasMany(Student::class);
     }
 }

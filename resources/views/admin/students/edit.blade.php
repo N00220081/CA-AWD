@@ -49,13 +49,18 @@
                         value="">
                     </x-textarea>
                   
-                    <x-text-input
-                        type="text"
-                        name="college_id"
-                        placeholder="College ID"
-                        class="w-full mt-6"
-                        field="college_id"
-                        value=""></x-text-input>
+                    
+                    <div class="mt-6">
+                        <x-select-college name="college_id" :colleges="$colleges" :selected="old('college_id')"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="courses" ><strong>Courses</strong><br></label>
+                        @foreach($courses as $course)
+                        <input type="checkbox", value="{{$course->id}}" name="courses[]">
+                        {{$course->name}}
+                        @endforeach 
+                    </div>
 
                     <x-primary-button class="mt-6">Save Student</x-primary-button>
                 </form>

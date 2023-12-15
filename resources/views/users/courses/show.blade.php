@@ -39,14 +39,9 @@
                            
                         </tbody>
                     </table>
-                    <x-primary-button><a href="{{ route('admin.courses.edit', $course)}}">Edit</a></x-primary-button>
+                    <x-primary-button><a href="{{ route('user.courses.edit', $course)}}">Edit</a></x-primary-button>
 
-                    <!-- A form for deleting the course. -->
-                    <form action="{{ route('admin.courses.destroy', $course) }}" method="post">
-                     <!-- Use the HTTP DELETE method. -->    
-                    @method('delete')
-                     <!-- Display a button for deleting the course with a confirmation dialog. -->
-
+                 
                         @csrf
                         <x-primary-button onclick="return confirm('Are you sure you want to delete?')">Delete </x-primary-button>
                     </form>
